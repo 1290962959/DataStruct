@@ -21,6 +21,12 @@ int index_of_max(T a[], int n)
 template<class T>
 void selection_sort(T a[], int n)
 {
-	int indexOfMax = index_of_max<T>(a, n);
-
+	for (int size = n; size > 1; --size)
+	{
+		int j = index_of_max<T>(a, size);
+		std::swap(a[j], a[size - 1]);
+	}
 }
+
+
+//及时停止的选择排序,添加一个标志量
