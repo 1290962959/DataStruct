@@ -87,7 +87,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <SDLCheck>true</SDLCheck>
+      <SDLCheck>false</SDLCheck>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -145,9 +145,12 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="arraylist.h" />
     <ClInclude Include="bubble_sort.h" />
     <ClInclude Include="group_sort.h" />
+    <ClInclude Include="illegalParameterValue.h" />
     <ClInclude Include="insert_sort.h" />
+    <ClInclude Include="linearlist.h" />
     <ClInclude Include="permutations.h" />
     <ClInclude Include="selection_sort.h" />
     <ClInclude Include="stdafx.h" />

@@ -9,6 +9,9 @@
 #include <new>
 #include <iterator>
 
+//包含抛出错误的头文件
+#include "illegalParameterValue.h"
+
 #include "permutations.h"
 //permutations排序函数的测试函数
 void test_permutations()
@@ -60,14 +63,27 @@ void test_insert_sort()
 	std::cout << std::endl;
 }
 
+#include "linearlist.h"
+#include "arraylist.h"
+//array list的测试函数
+void test_array_list()
+{
+	int a[10] = {0,1,2,3,4,5,6,7,8,9};
+	ArrayList<int> al(10);
+	al.insert(0, 1);
+	if (!al.empty())
+		cout << "not empty" << endl;
+	cout << al.index_of(1) << endl;
+}
 
 using namespace std;
+
 int main()
 {
 	//test_permutations();
 	//test_group_sort();
 	//test_selection_sort();
 	//test_bubble_sort();
-	
+	test_array_list();
 	return 0;
 }

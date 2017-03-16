@@ -39,6 +39,15 @@
     <ClInclude Include="insert_sort.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="illegalParameterValue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="linearlist.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="arraylist.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
