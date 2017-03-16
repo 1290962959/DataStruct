@@ -80,10 +80,11 @@ void ArrayList<T>::check_index(int theIndex) const
 {
 	if (theIndex < 0 || theIndex >= list_size)
 	{
-		/*ostringstream s;
-		s << "index = " << theIndex << "size = " << list_size;*/
+		ostringstream s;
+		s << "index = " << theIndex << "size = " << list_size;
 		//throw illegalParameterValue(s.str());
 		throw "index illegal";
+		
 	}
 }
 
