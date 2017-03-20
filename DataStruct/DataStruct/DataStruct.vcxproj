@@ -153,6 +153,7 @@
     <ClInclude Include="illegalParameterValue.h" />
     <ClInclude Include="insert_sort.h" />
     <ClInclude Include="linearlist.h" />
+    <ClInclude Include="matrix.h" />
     <ClInclude Include="permutations.h" />
     <ClInclude Include="selection_sort.h" />
     <ClInclude Include="stdafx.h" />
