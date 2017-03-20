@@ -68,18 +68,39 @@ void test_insert_sort()
 //array list的测试函数
 void test_array_list()
 {
-	int a[10] = {0,1,2,3,4,5,6,7,8,9};
-	ArrayList<int> al(10);
-	al.insert(0, 1);
-	al.insert(1,6);
-	if (!al.empty())
-		cout << "not empty" << endl;
-	cout << al.index_of(1) << endl;
-	al.output(cout);
+	//ArrayList<int> al(10);
+	//al.insert(0, 1);
+	//al.insert(1,6);
+	//if (!al.empty())
+	//	cout << "not empty" << endl;
+	//cout << al.index_of(1) << endl;
+	//al.output(cout);
 	//al.get(3);
 	//throw "why";
+	LinearList<int>* ll = new ArrayList<int>(10);
+	ll->insert(0, 1);
+	if (!ll->empty())
+		cout << "not empty " << ll->size() << endl;
+	ll->output(cout);
+	cout << ll->get(0) << endl;
+	ll->erase(0);
+	if (ll->empty())
+		cout << "empty" << endl;
+	
 }
 
+#include "chainlist.h"
+//链表的测试程序
+void test_chain_list()
+{
+	ChainList<int> test_chain(10);
+	test_chain.insert(0,0);
+	if (!test_chain.empty())
+	{
+		cout << "not empty" << endl;
+		//test_chain.output(cout);
+	}
+}
 using namespace std;
 
 int main()
@@ -88,6 +109,7 @@ int main()
 	//test_group_sort();
 	//test_selection_sort();
 	//test_bubble_sort();
-	test_array_list();
+	//test_array_list();
+	test_chain_list();
 	return 0;
 }

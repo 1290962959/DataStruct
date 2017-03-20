@@ -147,6 +147,7 @@
   <ItemGroup>
     <ClInclude Include="arraylist.h" />
     <ClInclude Include="bubble_sort.h" />
+    <ClInclude Include="chainlist.h" />
     <ClInclude Include="group_sort.h" />
     <ClInclude Include="illegalParameterValue.h" />
     <ClInclude Include="insert_sort.h" />
