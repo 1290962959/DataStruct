@@ -96,7 +96,7 @@ ChainList<T>::~ChainList()
 		nextNode=first_node_->next_;
 		*/
 		delete first_node_;
-		first_node_ = nextNode->next_;
+		first_node_ = nextNode;
 	}
 }
 
