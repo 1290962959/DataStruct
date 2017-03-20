@@ -98,9 +98,34 @@ void test_chain_list()
 	if (!test_chain.empty())
 	{
 		cout << "not empty" << endl;
-		//test_chain.output(cout);
+		test_chain.output(cout);
 	}
+	test_chain.insert(1, 1);
+	test_chain.insert(2, 2);
+
+	test_chain.output(cout);
+	test_chain.erase(1);
+	test_chain.output(cout);
+	cout << test_chain.index_of(0) << endl;
 }
+
+#include "binsort.h"
+//Ïä×ÓÅÅĞòµÄ²âÊÔ³ÌĞò
+void test_bin_sort()
+{
+	ChainList<StudentRecord>* newChain=new ChainList<StudentRecord>;
+	
+	newChain->insert(0, StudentRecord(3, "A"));
+	newChain->insert(1,StudentRecord(1,"B"));
+	newChain->insert(2, StudentRecord(0, "C"));
+	newChain->insert(3, StudentRecord(5, "D"));
+
+	newChain->output(cout);
+	bin_sort(*newChain, 5);
+	newChain->output(cout);
+}
+
+
 using namespace std;
 
 int main()
@@ -110,6 +135,7 @@ int main()
 	//test_selection_sort();
 	//test_bubble_sort();
 	//test_array_list();
-	test_chain_list();
+	//test_chain_list();
+	//test_bin_sort();
 	return 0;
 }

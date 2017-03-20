@@ -31,7 +31,8 @@ template <class T>
 class ChainList : public LinearList<T> 
 {
 public:
-	ChainList(int initialCapacity);
+	//ChainList() { }
+	ChainList(int initialCapacity=10);//一般给个默认的值 这样的话一方面减少了不确定性，一方面省去了无参数的构造函数
 	ChainList(const ChainList<T>& theChain);
 	~ChainList();
 

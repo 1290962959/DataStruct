@@ -146,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="arraylist.h" />
+    <ClInclude Include="binsort.h" />
     <ClInclude Include="bubble_sort.h" />
     <ClInclude Include="chainlist.h" />
     <ClInclude Include="group_sort.h" />
