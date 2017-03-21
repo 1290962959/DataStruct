@@ -9,6 +9,8 @@
 #include <new>
 #include <iterator>
 
+using namespace std;
+
 //包含抛出错误的头文件
 #include "illegalParameterValue.h"
 
@@ -162,8 +164,21 @@ void test_matrix()
 	matrix1.output();
 }
 
-using namespace std;
-
+#include "arraystack.h"
+//数组栈类的测试程序
+void test_array_stack()
+{
+	ArrayStack<int> as1(10);
+	if (as1.empty())
+	{
+		as1.push(1);
+		as1.push(2);
+	}
+	cout << as1.size() << endl;
+	as1.pop();
+	cout << as1.size() << endl;
+	cout<<as1.top()<<endl;
+}
 int main()
 {
 	//test_permutations();
@@ -173,6 +188,7 @@ int main()
 	//test_array_list();
 	//test_chain_list();
 	//test_bin_sort();
-	test_matrix();
+	//test_matrix();
+	//test_array_stack();
 	return 0;
 }

@@ -29,7 +29,7 @@ class ArrayList : public LinearList<T> {
 public:
 			//构造函数、拷贝构造函数与析构函数
 
-	ArrayList(int initialCapacity);
+	ArrayList(int initialCapacity=10);
 	ArrayList(const ArrayList<T>& anotherArrayList);
 	~ArrayList() { delete[]element; }   //若花括号内为空则加分号，否则不加
 
@@ -153,3 +153,7 @@ void ArrayList<T>::output(ostream& out) const
 	copy(element, element+list_size, ostream_iterator<T>(cout, " "));
 	out << std::endl;
 }
+
+/*
+为arraylist设置一个迭代器
+*/
