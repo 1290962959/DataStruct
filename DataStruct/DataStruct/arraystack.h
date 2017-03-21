@@ -29,7 +29,15 @@ public:
 		stack_[stack_top_--].~T();
 	}
 	void push(const T& theElement);
-
+	void output() const 
+	{
+		if (!empty())
+		{
+			for (int i = 0; i < size(); ++i)
+				std::cout << stack_[i];
+			std::cout << std::endl;
+		}
+	}
 private:
 	int stack_top_;
 	int array_length_;

@@ -151,9 +151,11 @@
     <ClInclude Include="bubble_sort.h" />
     <ClInclude Include="chainlist.h" />
     <ClInclude Include="group_sort.h" />
+    <ClInclude Include="hanoitower.h" />
     <ClInclude Include="illegalParameterValue.h" />
     <ClInclude Include="insert_sort.h" />
     <ClInclude Include="linearlist.h" />
+    <ClInclude Include="linkstack.h" />
     <ClInclude Include="matrix.h" />
     <ClInclude Include="permutations.h" />
     <ClInclude Include="selection_sort.h" />

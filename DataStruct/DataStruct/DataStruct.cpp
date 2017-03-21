@@ -11,6 +11,8 @@
 
 using namespace std;
 
+long long jiecheng(int n);
+
 //包含抛出错误的头文件
 #include "illegalParameterValue.h"
 
@@ -179,6 +181,29 @@ void test_array_stack()
 	cout << as1.size() << endl;
 	cout<<as1.top()<<endl;
 }
+
+#include "linkstack.h"
+//链栈的测试程序
+void test_link_stack()
+{
+	LinkStack<int> ls;
+	if (ls.empty())
+	{
+		ls.push(3);
+		ls.push(2);
+	}
+	cout << ls.size() << endl;
+	ls.pop();
+	cout << ls.size() << endl;
+	cout << ls.top() << endl;
+}
+
+#include "hanoitower.h"
+void test_tower()
+{
+	towers_of_hanoi(5);
+}
+
 int main()
 {
 	//test_permutations();
@@ -190,5 +215,21 @@ int main()
 	//test_bin_sort();
 	//test_matrix();
 	//test_array_stack();
+	//test_link_stack();
+
+	//cout << jiecheng(30) << endl;
+
+	test_tower();
+
+
 	return 0;
+}
+
+//递归的方法实现n的阶乘,但是超过十就不怎么好用了
+long long jiecheng(int n)
+{
+	if (n == 1)
+		return 1;
+	else
+		return jiecheng(n - 1)*n;
 }
