@@ -125,6 +125,42 @@ void test_bin_sort()
 	newChain->output(cout);
 }
 
+#include "matrix.h"
+//æÿ’Ûµƒ≤‚ ‘≥Ã–Ú
+void test_matrix()
+{
+	Matrix<int> matrix1(3,3);
+	matrix1(1, 1) = 1;
+	matrix1(1, 2) = 2;
+	matrix1(1, 3) = 3;
+	matrix1(2, 1) = 4;
+	matrix1(2, 2) = 5;
+	matrix1(2, 3) = 6;
+	matrix1(3, 1) = 7;
+	matrix1(3, 2) = 8;
+	matrix1(3, 3) = 9;
+	matrix1.output();
+	Matrix<int> matrix2(3, 3);
+	matrix2(1, 1) = 1;
+	matrix2(1, 2) = 2;
+	matrix2(1, 3) = 3;
+	matrix2(2, 1) = 4;
+	matrix2(2, 2) = 5;
+	matrix2(2, 3) = 6;
+	matrix2(3, 1) = 7;
+	matrix2(3, 2) = 8;
+	matrix2(3, 3) = 9;
+	matrix2.output();
+	matrix1 = matrix2;
+	matrix1.output();
+	cout << matrix1(3, 3) << endl;
+		//≤‚ ‘≥À∑®
+	/*matrix1 = matrix1*matrix2;
+	matrix1.output();*/
+		//≤‚ ‘º”∑®
+	matrix1 = matrix1 + matrix2;
+	matrix1.output();
+}
 
 using namespace std;
 
@@ -137,5 +173,6 @@ int main()
 	//test_array_list();
 	//test_chain_list();
 	//test_bin_sort();
+	test_matrix();
 	return 0;
 }
