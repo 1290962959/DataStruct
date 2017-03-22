@@ -221,6 +221,25 @@ void test_maze()
 		path->output();
 	}
 }
+
+#include "queue.h"
+void test_array_queue()
+{
+	ArrayQueue<int> aq(10);
+	aq.push(1);
+	if (aq.empty())
+		cout << "empty" << endl;
+	else
+		aq.output();
+	aq.push(2);
+	aq.push(5);
+	cout << aq.front() << endl;
+	cout << aq.back() << endl;
+	aq.output();
+	aq.pop();
+	aq.output();
+}
+
 int main()
 {
 	//test_permutations();
@@ -240,7 +259,9 @@ int main()
 
 	//test_shendu_jiecheng();
 	//test_maze();
-	
+	//test_array_queue();
+
+
 	return 0;
 }
 
