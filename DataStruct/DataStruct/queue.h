@@ -30,8 +30,14 @@ public:
 template<class T>
 class ArrayQueue : public Queue<T>
 {
-	friend ostream& operator<<(ostream& out, const ArrayQueue<T>& theArrayQueue);
+	//模板内友元的声明方式，放在public也行
+	template<class S>
+	friend ostream& operator<<(ostream& out, const ArrayQueue<S>& theArrayQueue);
+
 public:
+
+
+
 	ArrayQueue(int initialCapacity = 10);
 	ArrayQueue(const ArrayQueue<T>& theArrayQueue);
 	~ArrayQueue() { delete queue_; }
@@ -70,10 +76,15 @@ private:
 	int array_length_;
 };
 
-template<class T>
+template<class T>//不知道为什么失败了
 ostream& operator<<(ostream& out, const ArrayQueue<T>& theArrayQueue)
 {
-	out << theArrayQueue.queue_[(theArrayQueue.queue_front_+ 1) % theArrayQueue.array_length_];
+	
+	for (int i = 0; i < theArrayQueue.size(); ++i)
+	{
+		out << theArrayQueue.queue_[(theArrayQueue.queue_front_ + 1 + i) % theArrayQueue.array_length_];
+		out << " ";
+	}
 	return out;
 }
 

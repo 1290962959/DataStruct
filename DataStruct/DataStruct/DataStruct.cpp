@@ -9,6 +9,8 @@
 #include <new>
 #include <iterator>
 
+
+
 using namespace std;
 
 long long jiecheng(int n);
@@ -237,11 +239,15 @@ void test_array_queue()
 	cout << aq.back() << endl;
 	aq.output();
 	aq.pop();
-	aq.output();
+	cout << aq << endl;
 }
 
+
+
+
 int main()
-{
+{//不要随便使用using namespace std , std里的函数很可能与自己定义的名字重复
+	
 	//test_permutations();
 	//test_group_sort();
 	//test_selection_sort();
@@ -260,8 +266,7 @@ int main()
 	//test_shendu_jiecheng();
 	//test_maze();
 	//test_array_queue();
-
-
+	
 	return 0;
 }
 
