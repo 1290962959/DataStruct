@@ -199,11 +199,28 @@ void test_link_stack()
 }
 
 #include "hanoitower.h"
+//汉诺塔测试程序
 void test_tower()
 {
-	towers_of_hanoi(5);
+	towers_of_hanoi(3);
 }
 
+#include "digui_jiecheng_extend.h"
+//防溢出的阶乘测试   实际上并没有效果  采用栈和循环的方式解决递归栈的溢出问题
+void test_shendu_jiecheng()
+{
+	cout << FactLoop(13) << endl;
+}
+
+#include "maze.h"
+//迷宫的测试程序
+void test_maze()
+{
+	if (find_path())
+	{
+		path->output();
+	}
+}
 int main()
 {
 	//test_permutations();
@@ -217,11 +234,13 @@ int main()
 	//test_array_stack();
 	//test_link_stack();
 
-	//cout << jiecheng(30) << endl;
+	//cout << jiecheng(13) << endl;
 
-	test_tower();
+	//test_tower();//递归调用超过10次就会出现栈溢出的问题
 
-
+	//test_shendu_jiecheng();
+	//test_maze();
+	
 	return 0;
 }
 

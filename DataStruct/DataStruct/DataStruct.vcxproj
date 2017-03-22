@@ -150,6 +150,7 @@
     <ClInclude Include="binsort.h" />
     <ClInclude Include="bubble_sort.h" />
     <ClInclude Include="chainlist.h" />
+    <ClInclude Include="digui_jiecheng_extend.h" />
     <ClInclude Include="group_sort.h" />
     <ClInclude Include="hanoitower.h" />
     <ClInclude Include="illegalParameterValue.h" />
@@ -157,6 +158,7 @@
     <ClInclude Include="linearlist.h" />
     <ClInclude Include="linkstack.h" />
     <ClInclude Include="matrix.h" />
+    <ClInclude Include="maze.h" />
     <ClInclude Include="permutations.h" />
     <ClInclude Include="selection_sort.h" />
     <ClInclude Include="stack.h" />

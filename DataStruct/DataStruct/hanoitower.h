@@ -17,13 +17,9 @@ void towers_of_hanoi(int n)
 	move_and_show(n, 1, 2, 3);
 }
 
-void show_state()
-{
-	if(!tower[3].empty())
-		std::cout << tower[3].top() << std::endl;
-}
 void move_and_show(int n, int x, int y, int z)
 {
+	std::cout << "move from " << x << " to " << z << " by " << y << std::endl;
 	if (n > 0)
 	{
 		move_and_show(n - 1, x, z, y);
