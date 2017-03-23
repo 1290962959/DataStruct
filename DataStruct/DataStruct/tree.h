@@ -1,24 +1,195 @@
 #pragma once
 
+/****************************
+	Filename: tree.h
+
+	Description:模板树，提供接口以及遍历的方法。
+
+	Author: hanbin
+
+	Time: 17.03.23
+******************************/
+
+
+
 #include <iostream>
 #include <new>
 #include <iterator>
+
+#include "queue.h"
+
+
 
 template<class T>
 struct BinaryTreeNode
 {
 	T element_;
-	BinaryTreeNode<T>* left_child_,				//左子树
-									right_child_;			//右子树
+	BinaryTreeNode<T>* left_child_;			//左子树
+	BinaryTreeNode<T>*	right_child_;			//右子树
 
 		//构造函数    赋值运算符需要在T类型中重载吗?
 	BinaryTreeNode() { left_child_ = right_child_ = nullptr; }
-	BinaryTreeNode(const T& theElement) : element_{ theElement } { left_child_ = right_child_ = nullptr; }
+	BinaryTreeNode(const T& theElement) { element_ = theElement; left_child_ = right_child_ = nullptr; }
 	BinaryTreeNode(const T& theElement, BinaryTreeNode<T>* theLeftChild, BinaryTreeNode<T>* theRightChild)
 	{
-		element_{ theElement };	//在这里直接赋值？ 这里不加;没问题吗？
+		element_=theElement;	//在这里直接赋值？ 这里不加;没问题吗？
 		left_child_ = theLeftChild;
 		right_child_ = theRightChild;
 	}
 };
 
+template<class T>
+class BinaryTree
+{
+public:
+	virtual ~BinaryTree() { }
+		//树为空返回true
+	virtual bool empty() const = 0;
+		//返回树的元素个数
+	virtual int size() const = 0;
+		//先序遍历
+	virtual void pre_order(void(*) (T*)) = 0;		//void* 可以指向任何数据单元,在这里 void(*)(T*)指的是返回值为void 参数类型T*的函数
+		//中序遍历
+	virtual void in_order(void(*)(T*)) = 0;
+		//后序遍历
+	virtual void post_order(void(*)(T*)) = 0;
+		//层序遍历
+	virtual void level_order(void(*)(T*)) = 0;
+};
+
+template<class E>
+class LinkBinaryTree : public BinaryTree<BinaryTreeNode<E> >
+{
+public:
+	LinkBinaryTree() { root_ = nullptr; tree_size_ = 0; }
+	~LinkBinaryTree() { erase(); }
+
+	bool empty() const { return tree_size_ == 0; }
+	int size() const { return tree_size_; }
+
+	void make_tree(const E& theElement, LinkBinaryTree<E>& leftTree, LinkBinaryTree<E>& rightTree)
+	{
+		root_ = new BinaryTreeNode<E>(theElement, leftTree.root_, rightTree.root_);
+		tree_size_ = leftTree.tree_size_ + rightTree.tree_size_ + 1;
+	}
+
+	void pre_order(void(*theVisit)(BinaryTreeNode<E>*))
+	{
+		visit = theVisit;
+		pre_order(root_);
+	}
+	void in_order(void(*theVisit)(BinaryTreeNode<E>*))
+	{
+		visit = theVisit;
+		in_order(root_);
+	}
+	void post_order(void(*theVisit)(BinaryTreeNode<E>*))
+	{
+		visit = theVisit;
+		post_order(root_);
+	}
+	void level_order(void(*theVisit)(BinaryTreeNode<E>*))
+	{
+		visit = theVisit;
+		level_order(root_);
+	}
+	void erase()
+	{
+		post_order(dispose);
+		root_ = nullptr;
+		tree_size_ = 0;
+	}
+	void pre_order_output()
+	{
+		pre_order(output);
+		std::cout << std::endl;
+	}
+	void visit_func(BinaryTreeNode<E>* t)
+	{
+		std::cout << t->element_ << " ";
+	}
+private:
+	BinaryTreeNode<E>* root_;
+	int tree_size_;
+	static void(*visit)(BinaryTreeNode<E>*);          //只是指针
+	static void pre_order(BinaryTreeNode<E>* t);	//普通成员函数的参数是函数指针，而静态函数的参数是BinaryTreeNode
+	static void in_order(BinaryTreeNode<E>* t);
+	static void post_order(BinaryTreeNode<E>* t);
+	static void level_order(BinaryTreeNode<E>* t);
+	static void dispose(BinaryTreeNode<E>* t);
+	static void output(BinaryTreeNode<E>* t);
+	//static void visit_func(BinaryTreeNode<E>* t);
+};
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+template<class E>
+void (*LinkBinaryTree<E>::visit)(BinaryTreeNode<E>*) = nullptr;
+
+template<class E>
+void LinkBinaryTree<E>::pre_order(BinaryTreeNode<E>* t)		//静态成员函数的定义不需要再加static
+{
+	if (t != nullptr)
+	{
+		LinkBinaryTree<E>::visit(t);
+		//std::cout << t->element_ << std::endl;
+		pre_order(t->left_child_);
+		pre_order(t->right_child_);
+	}
+}
+template<class E>
+void LinkBinaryTree<E>::in_order(BinaryTreeNode<E>* t)
+{
+	if (t != nullptr)
+	{
+		in_order(t->left_child_);
+		LinkBinaryTree<E>::visit(t);
+		//std::cout << t->element_ << std::endl;
+		in_order(t->right_child_);
+	}
+}
+template<class E>
+void LinkBinaryTree<E>::post_order(BinaryTreeNode<E>* t)
+{
+	if (t != nullptr)
+	{
+		post_order(t->left_child_);
+		post_order(t->right_child_);
+		LinkBinaryTree<E>::visit(t);
+		//std::cout << t->element_ << std::endl;
+	}
+}
+template<class E>
+void LinkBinaryTree<E>::level_order(BinaryTreeNode<E>* t)
+{
+	ArrayQueue<BinaryTreeNode<E>*> q;
+	while (t != nullptr)
+	{
+		std::cout << t->element_;
+
+		if (t->left_child_ != nullptr)
+			q.push(t->left_child_);
+		if (t->right_child_ != nullptr)
+			q.push(t->right_child_);
+
+		try
+		{
+			t = q.front();
+		}
+		catch (const char*)
+		{
+			return;
+		}
+		q.pop();
+		std::cout << std::endl;
+	}
+}
+template<class E>
+void LinkBinaryTree<E>::output(BinaryTreeNode<E>* t)
+{
+	std::cout << t->element_ << " ";
+}
+template<class E>
+void LinkBinaryTree<E>::dispose(BinaryTreeNode<E>* t)
+{
+	delete t;
+}

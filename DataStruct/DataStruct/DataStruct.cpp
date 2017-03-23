@@ -242,12 +242,24 @@ void test_array_queue()
 	cout << aq << endl;
 }
 
-
-
-
+#include "tree.h"
+void test_tree()
+{
+	LinkBinaryTree<int> tree1;
+	LinkBinaryTree<int> tree2;
+	LinkBinaryTree<int> tree3;
+	LinkBinaryTree<int> tree4;
+	LinkBinaryTree<int> tree5;
+	tree4.make_tree(4, tree5, tree5);
+	tree3.make_tree(3, tree4, tree5);
+	tree2.make_tree(2, tree4, tree5);
+	tree1.make_tree(1, tree2, tree3);
+	tree1.pre_order_output();
+}
 int main()
 {//不要随便使用using namespace std , std里的函数很可能与自己定义的名字重复
-	
+
+	//cout << test_static::a_ << endl;
 	//test_permutations();
 	//test_group_sort();
 	//test_selection_sort();
@@ -259,13 +271,15 @@ int main()
 	//test_array_stack();
 	//test_link_stack();
 
-	//cout << jiecheng(13) << endl;
+	//cout << jiecheng(12) << endl;
 
 	//test_tower();//递归调用超过10次就会出现栈溢出的问题
 
 	//test_shendu_jiecheng();
 	//test_maze();
 	//test_array_queue();
+	
+	test_tree();
 	
 	return 0;
 }
