@@ -58,15 +58,15 @@ public:
 };
 
 template<class E>
-class LinkBinaryTree : public BinaryTree<BinaryTreeNode<E> >
+class LinkBinaryTree : public BinaryTree<BinaryTreeNode<E> > 
 {
 public:
 	LinkBinaryTree() { root_ = nullptr; tree_size_ = 0; }
-	~LinkBinaryTree() { erase(); }
+	~LinkBinaryTree() { }
 
 	bool empty() const { return tree_size_ == 0; }
 	int size() const { return tree_size_; }
-
+	int height(BinaryTreeNode<E>* t) const;
 	void make_tree(const E& theElement, LinkBinaryTree<E>& leftTree, LinkBinaryTree<E>& rightTree)
 	{
 		root_ = new BinaryTreeNode<E>(theElement, leftTree.root_, rightTree.root_);
@@ -104,9 +104,28 @@ public:
 		pre_order(output);
 		std::cout << std::endl;
 	}
+	void in_order_output()
+	{
+		in_order(output);
+		std::cout << std::endl;
+	}
+	void post_order_output()
+	{
+		post_order(output);
+		std::cout << std::endl;
+	}
+	void level_order_output()
+	{
+		level_order(output);
+		std::cout << std::endl;
+	}
 	void visit_func(BinaryTreeNode<E>* t)
 	{
 		std::cout << t->element_ << " ";
+	}
+	void height_output()
+	{
+		std::cout << height(root_) << std::endl;
 	}
 private:
 	BinaryTreeNode<E>* root_;
@@ -124,6 +143,19 @@ private:
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 template<class E>
 void (*LinkBinaryTree<E>::visit)(BinaryTreeNode<E>*) = nullptr;
+
+template<class E>
+int LinkBinaryTree<E>::height(BinaryTreeNode<E>* t) const
+{
+	if (t != nullptr)
+		return 0;
+	int h1 = height(t->left_child_);
+	int h2 = height(t->right_child_);
+	if (h1 > h2)
+		return ++h1;
+	else
+		return ++h2;
+}
 
 template<class E>
 void LinkBinaryTree<E>::pre_order(BinaryTreeNode<E>* t)		//静态成员函数的定义不需要再加static
@@ -164,7 +196,7 @@ void LinkBinaryTree<E>::level_order(BinaryTreeNode<E>* t)
 	ArrayQueue<BinaryTreeNode<E>*> q;
 	while (t != nullptr)
 	{
-		std::cout << t->element_;
+		LinkBinaryTree<E>::visit(t);
 
 		if (t->left_child_ != nullptr)
 			q.push(t->left_child_);
@@ -180,7 +212,7 @@ void LinkBinaryTree<E>::level_order(BinaryTreeNode<E>* t)
 			return;
 		}
 		q.pop();
-		std::cout << std::endl;
+		//std::cout << std::endl;
 	}
 }
 template<class E>
@@ -188,8 +220,10 @@ void LinkBinaryTree<E>::output(BinaryTreeNode<E>* t)
 {
 	std::cout << t->element_ << " ";
 }
+
 template<class E>
 void LinkBinaryTree<E>::dispose(BinaryTreeNode<E>* t)
 {
-	delete t;
+	//if(t!=nullptr)
+		delete t;
 }

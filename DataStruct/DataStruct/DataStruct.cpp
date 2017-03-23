@@ -254,7 +254,14 @@ void test_tree()
 	tree3.make_tree(3, tree4, tree5);
 	tree2.make_tree(2, tree4, tree5);
 	tree1.make_tree(1, tree2, tree3);
+	cout << tree1.size() << endl;
 	tree1.pre_order_output();
+	tree1.in_order_output();
+	tree1.post_order_output();
+	tree1.level_order_output();
+	tree1.height_output();
+		//	erase程序是有问题的
+	//tree1.erase();
 }
 int main()
 {//不要随便使用using namespace std , std里的函数很可能与自己定义的名字重复
