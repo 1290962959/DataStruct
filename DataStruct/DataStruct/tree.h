@@ -133,7 +133,7 @@ public:
 	}
 	void in_order_uncursion_output()
 	{
-		in_order_uncursion(output);
+		in_order_unrecursion(output);
 		std::cout << std::endl;
 	}
 	void post_order_output()
@@ -238,8 +238,23 @@ template<class E>
 void LinkBinaryTree<E>::in_order_unrecursion(BinaryTreeNode<E>* t)
 {
 	std::stack<BinaryTreeNode<E>*> tree_node_stack;
-	BinaryTreeNode<E>* current_root = new BinaryTreeNode<E>*(t->element_, t->left_child_, t->right_child_);
-	while(current_root!=nullptr)
+	BinaryTreeNode<E>* current_root = new BinaryTreeNode<E>(t->element_, t->left_child_, t->right_child_);
+	while (current_root != nullptr || !tree_node_stack.empty())
+	{
+		while (current_root != nullptr)
+		{
+			tree_node_stack.push(current_root);
+			current_root = current_root->left_child_;
+		}
+		if (!tree_node_stack.empty())
+		{
+			current_root = tree_node_stack.top();
+			LinkBinaryTree<E>::visit(current_root);
+			tree_node_stack.pop();
+			current_root = current_root->right_child_;
+		}
+	}
+	delete current_root;
 }
 template<class E>
 void LinkBinaryTree<E>::post_order(BinaryTreeNode<E>* t)
@@ -252,6 +267,33 @@ void LinkBinaryTree<E>::post_order(BinaryTreeNode<E>* t)
 		//std::cout << t->element_ << std::endl;
 	}
 }
+template<class E>
+void LinkBinaryTree<E>::post_order_unrecursion(BinaryTreeNode<E>* t)
+{
+	std::stack<BinaryTreeNode<E>*> tree_node_stack;
+	BinaryTreeNode<E>* current_root = new BinaryTreeNode<E>(t->element_, t->left_child_, t->right_child_);
+	BinaryTreeNode<E>* pre_root = nullptr;
+	tree_node_stack.push(current_root);
+	while (!tree_node_stack.empty())
+	{
+		current_root = tree_node_stack.top();
+		if ((current_root->left_child_ == nullptr&&current_root->right_child_ == nullptr) ||
+			(pre_root != nullptr && (pre_root == current_root->left_child_ || pre_root == current_root->right_child_)))
+		{
+			LinkBinaryTree<E>::visit(current_root);
+			tree_node_stack.pop();
+			pre_root = current_root;
+		}
+		else
+		{
+			if (current_root->right_child_ != nullptr)
+				tree_node_stack.push(current_root->right_child_);
+			if (current_root->left_child_ != nullptr)
+				tree_node_stack.push(current_root->left_child_);
+		}
+	}
+}
+
 template<class E>
 void LinkBinaryTree<E>::level_order(BinaryTreeNode<E>* t)
 {

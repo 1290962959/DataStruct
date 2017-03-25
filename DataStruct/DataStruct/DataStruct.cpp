@@ -260,7 +260,9 @@ void test_tree()
 	tree1.pre_order_output();
 	tree1.pre_order_unrecursion_output();
 	tree1.in_order_output();
+	tree1.in_order_uncursion_output();
 	tree1.post_order_output();
+	tree1.post_order_unrecursion_output();
 	tree1.level_order_output();
 
 
