@@ -161,6 +161,7 @@
     <ClInclude Include="matrix.h" />
     <ClInclude Include="maze.h" />
     <ClInclude Include="permutations.h" />
+    <ClInclude Include="priorityqueue.h" />
     <ClInclude Include="queue.h" />
     <ClInclude Include="selection_sort.h" />
     <ClInclude Include="stack.h" />

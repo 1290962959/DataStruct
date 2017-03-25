@@ -15,6 +15,8 @@
 #include <iostream>
 #include <new>
 #include <iterator>
+#include <stack>
+
 
 #include "queue.h"
 
@@ -78,15 +80,30 @@ public:
 		visit = theVisit;
 		pre_order(root_);
 	}
+	void pre_order_unrecursion(void(*theVisit)(BinaryTreeNode<E>*))
+	{
+		visit = theVisit;
+		pre_order_unrecursion(root_);
+	}
 	void in_order(void(*theVisit)(BinaryTreeNode<E>*))
 	{
 		visit = theVisit;
 		in_order(root_);
 	}
+	void in_order_unrecursion(void(*theVisit)(BinaryTreeNode<E>*))
+	{
+		visit = theVisit;
+		in_order_unrecursion(root_);
+	}
 	void post_order(void(*theVisit)(BinaryTreeNode<E>*))
 	{
 		visit = theVisit;
 		post_order(root_);
+	}
+	void post_order_unrecursion(void(*theVisit)(BinaryTreeNode<E>*))
+	{
+		visit = theVisit;
+		post_order_unrecursion(root_);
 	}
 	void level_order(void(*theVisit)(BinaryTreeNode<E>*))
 	{
@@ -104,14 +121,29 @@ public:
 		pre_order(output);
 		std::cout << std::endl;
 	}
+	void pre_order_unrecursion_output()
+	{
+		pre_order_unrecursion(output);
+		std::cout << std::endl;
+	}
 	void in_order_output()
 	{
 		in_order(output);
 		std::cout << std::endl;
 	}
+	void in_order_uncursion_output()
+	{
+		in_order_uncursion(output);
+		std::cout << std::endl;
+	}
 	void post_order_output()
 	{
 		post_order(output);
+		std::cout << std::endl;
+	}
+	void post_order_unrecursion_output()
+	{
+		post_order_unrecursion(output);
 		std::cout << std::endl;
 	}
 	void level_order_output()
@@ -132,8 +164,11 @@ private:
 	int tree_size_;
 	static void(*visit)(BinaryTreeNode<E>*);          //Ö»ÊÇÖ¸Õë
 	static void pre_order(BinaryTreeNode<E>* t);	//ÆÕÍ¨³ÉÔ±º¯ÊýµÄ²ÎÊýÊÇº¯ÊýÖ¸Õë£¬¶ø¾²Ì¬º¯ÊýµÄ²ÎÊýÊÇBinaryTreeNode
+	static void pre_order_unrecursion(BinaryTreeNode<E>* t);
 	static void in_order(BinaryTreeNode<E>* t);
+	static void in_order_unrecursion(BinaryTreeNode<E>* t);
 	static void post_order(BinaryTreeNode<E>* t);
+	static void post_order_unrecursion(BinaryTreeNode<E>* t);
 	static void level_order(BinaryTreeNode<E>* t);
 	static void dispose(BinaryTreeNode<E>* t);
 	static void output(BinaryTreeNode<E>* t);
@@ -169,6 +204,26 @@ void LinkBinaryTree<E>::pre_order(BinaryTreeNode<E>* t)		//¾²Ì¬³ÉÔ±º¯ÊýµÄ¶¨Òå²»Ð
 	}
 }
 template<class E>
+void LinkBinaryTree<E>::pre_order_unrecursion(BinaryTreeNode<E>* t)
+{
+	std::stack<BinaryTreeNode<E>*> tree_node_stack;
+	BinaryTreeNode<E>* current_root = new BinaryTreeNode<E>(t->element_, t->left_child_, t->right_child_);
+	
+	while (current_root !=nullptr || !tree_node_stack.empty())
+	{
+		tree_node_stack.push(current_root);
+		LinkBinaryTree<E>::visit(current_root);
+		current_root = current_root->left_child_;
+		while (current_root == nullptr && !tree_node_stack.empty())
+		{
+			current_root = tree_node_stack.top();
+			tree_node_stack.pop();
+			current_root = current_root->right_child_;
+		}
+	}
+	delete current_root;
+}
+template<class E>
 void LinkBinaryTree<E>::in_order(BinaryTreeNode<E>* t)
 {
 	if (t != nullptr)
@@ -178,6 +233,13 @@ void LinkBinaryTree<E>::in_order(BinaryTreeNode<E>* t)
 		//std::cout << t->element_ << std::endl;
 		in_order(t->right_child_);
 	}
+}
+template<class E>
+void LinkBinaryTree<E>::in_order_unrecursion(BinaryTreeNode<E>* t)
+{
+	std::stack<BinaryTreeNode<E>*> tree_node_stack;
+	BinaryTreeNode<E>* current_root = new BinaryTreeNode<E>*(t->element_, t->left_child_, t->right_child_);
+	while(current_root!=nullptr)
 }
 template<class E>
 void LinkBinaryTree<E>::post_order(BinaryTreeNode<E>* t)

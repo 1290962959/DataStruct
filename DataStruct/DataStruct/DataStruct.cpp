@@ -8,12 +8,14 @@
 #include <list>
 #include <new>
 #include <iterator>
-
+#include <string>
 
 
 using namespace std;
-
+using std::string;
 long long jiecheng(int n);
+
+
 
 //包含抛出错误的头文件
 #include "illegalParameterValue.h"
@@ -256,16 +258,22 @@ void test_tree()
 	tree1.make_tree(1, tree2, tree3);
 	cout << tree1.size() << endl;
 	tree1.pre_order_output();
+	tree1.pre_order_unrecursion_output();
 	tree1.in_order_output();
 	tree1.post_order_output();
 	tree1.level_order_output();
+
+
 	tree1.height_output();
 		//	erase程序是有问题的
 	//tree1.erase();
 }
+
+//#pragma pack(4)
+
+
 int main()
 {//不要随便使用using namespace std , std里的函数很可能与自己定义的名字重复
-
 	//cout << test_static::a_ << endl;
 	//test_permutations();
 	//test_group_sort();
@@ -288,7 +296,7 @@ int main()
 	
 	test_tree();
 	
-	return 0;
+	
 }
 
 //递归的方法实现n的阶乘,但是超过十就不怎么好用了
