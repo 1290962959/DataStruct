@@ -247,26 +247,30 @@ void test_array_queue()
 #include "tree.h"
 void test_tree()
 {
-	LinkBinaryTree<int> tree1;
-	LinkBinaryTree<int> tree2;
-	LinkBinaryTree<int> tree3;
-	LinkBinaryTree<int> tree4;
-	LinkBinaryTree<int> tree5;
-	tree4.make_tree(4, tree5, tree5);
-	tree3.make_tree(3, tree4, tree5);
-	tree2.make_tree(2, tree4, tree5);
-	tree1.make_tree(1, tree2, tree3);
-	cout << tree1.size() << endl;
-	tree1.pre_order_output();
-	tree1.pre_order_unrecursion_output();
-	tree1.in_order_output();
-	tree1.in_order_uncursion_output();
-	tree1.post_order_output();
-	tree1.post_order_unrecursion_output();
-	tree1.level_order_output();
+	//LinkBinaryTree<int> tree1;
+	//LinkBinaryTree<int> tree2;
+	//LinkBinaryTree<int> tree3;
+	//LinkBinaryTree<int> tree4;
+	//LinkBinaryTree<int> tree5;
+	//tree4.make_tree(4, tree5, tree5);
+	//tree3.make_tree(3, tree4, tree5);
+	//tree2.make_tree(2, tree4, tree5);
+	//tree1.make_tree(1, tree2, tree3);
+	//cout << tree1.size() << endl;
+	//tree1.pre_order_output();
+	//tree1.pre_order_unrecursion_output();
+	//tree1.in_order_output();
+	//tree1.in_order_uncursion_output();
+	//tree1.post_order_output();
+	//tree1.post_order_unrecursion_output();
+	//tree1.level_order_output();
+	//tree1.height_output();
 
-
-	tree1.height_output();
+	//LinkBinaryTree<int> tree8;
+	//tree8.create();
+	//tree8.pre_order_output();
+	//tree8.in_order_uncursion_output();
+	//tree8.post_order_output();
 		//	erase程序是有问题的
 	//tree1.erase();
 }
@@ -296,9 +300,11 @@ int main()
 	//test_maze();
 	//test_array_queue();
 	
-	test_tree();
-	
-	
+	//test_tree();
+
+
+	system("PAUSE");
+	return 0;
 }
 
 //递归的方法实现n的阶乘,但是超过十就不怎么好用了

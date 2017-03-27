@@ -69,6 +69,12 @@ public:
 	bool empty() const { return tree_size_ == 0; }
 	int size() const { return tree_size_; }
 	int height(BinaryTreeNode<E>* t) const;
+		//利用扩展二叉树及前序遍历(包含#)来构建二叉树
+	void create_binary_tree(BinaryTreeNode<E>* t);
+	void create()
+	{
+		create_binary_tree(root_);
+	}
 	void make_tree(const E& theElement, LinkBinaryTree<E>& leftTree, LinkBinaryTree<E>& rightTree)
 	{
 		root_ = new BinaryTreeNode<E>(theElement, leftTree.root_, rightTree.root_);
@@ -193,6 +199,23 @@ int LinkBinaryTree<E>::height(BinaryTreeNode<E>* t) const
 }
 
 template<class E>
+void LinkBinaryTree<E>::create_binary_tree(BinaryTreeNode<E>* t)
+{
+	E ch;
+	std::cout << "please input the elements: " << std::endl;
+	std::cin >> ch;
+	if (ch == 0)
+		t = nullptr;
+	else
+	{
+			t = new BinaryTreeNode<E>;
+			t->element_ = ch;
+			LinkBinaryTree<E>::create_binary_tree(t->left_child_);
+			LinkBinaryTree<E>::create_binary_tree(t->right_child_);
+	}
+}
+
+template<class E>
 void LinkBinaryTree<E>::pre_order(BinaryTreeNode<E>* t)		//静态成员函数的定义不需要再加static
 {
 	if (t != nullptr)
@@ -292,6 +315,8 @@ void LinkBinaryTree<E>::post_order_unrecursion(BinaryTreeNode<E>* t)
 				tree_node_stack.push(current_root->left_child_);
 		}
 	}
+	delete current_root;
+	delete pre_root;
 }
 
 template<class E>

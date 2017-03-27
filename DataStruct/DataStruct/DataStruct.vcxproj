@@ -152,6 +152,7 @@
     <ClInclude Include="bubble_sort.h" />
     <ClInclude Include="chainlist.h" />
     <ClInclude Include="digui_jiecheng_extend.h" />
+    <ClInclude Include="graph.h" />
     <ClInclude Include="group_sort.h" />
     <ClInclude Include="hanoitower.h" />
     <ClInclude Include="illegalParameterValue.h" />
