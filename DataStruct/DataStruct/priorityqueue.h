@@ -75,8 +75,25 @@ private:
 template<class T>
 void MaxHeap<T>::initialize(T* theHeap, int theSize)
 {
-	int current_node = theSize / 2;
+	delete[] heap_;
+	heap_ = theHeap;
+	heap_size_ = theSize;
 
+	for (int root = heap_size_ / 2; root >= 1; --root)
+	{
+		T rootElement = heap_[root];
+		int child = 2 * root;
+		while (child <= heap_size_)
+		{
+			if (child < heap_size_&&heap_[child] < heap_[child + 1])
+				child++;
+			if (rootElement >= heap_[child])
+				break;
+			heap_[child / 2] = heap_[child];
+			child * = 2;
+		}
+		heap_[child / 2] = rootElement;
+	}
 }
 
 template<class T>
