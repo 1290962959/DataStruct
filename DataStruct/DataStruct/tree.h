@@ -65,7 +65,11 @@ class LinkBinaryTree : public BinaryTree<BinaryTreeNode<E> >
 public:
 	LinkBinaryTree() { root_ = nullptr; tree_size_ = 0; }
 	~LinkBinaryTree() { }
-
+	 void test()
+	{
+		std::cout << "linkbinarytree test" << std::endl;
+		std::cout << test_ << std::endl;
+	}
 	bool empty() const { return tree_size_ == 0; }
 	int size() const { return tree_size_; }
 	int height(BinaryTreeNode<E>* t) const;
@@ -165,7 +169,7 @@ public:
 	{
 		std::cout << height(root_) << std::endl;
 	}
-private:
+protected:
 	BinaryTreeNode<E>* root_;
 	int tree_size_;
 	static void(*visit)(BinaryTreeNode<E>*);          //÷ª «÷∏’Î

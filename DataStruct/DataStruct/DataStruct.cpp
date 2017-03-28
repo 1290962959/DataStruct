@@ -277,9 +277,15 @@ void test_tree()
 
 //#pragma pack(4)
 
-
+#include "priorityqueue.h"
+void test_priority()
+{
+	MaxHBLT<int> test(10);
+	test.test2();
+}
 int main()
 {//不要随便使用using namespace std , std里的函数很可能与自己定义的名字重复
+	test_priority();
 	//cout << test_static::a_ << endl;
 	//test_permutations();
 	//test_group_sort();

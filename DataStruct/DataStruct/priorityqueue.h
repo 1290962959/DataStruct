@@ -17,6 +17,8 @@ Time				17.03.23
 #include <iterator>
 
 #include "arraylist.h"
+#include "tree.h"
+
 
 template<class T>
 class MaxPriorityQueue
@@ -62,7 +64,7 @@ public:
 	int size() const { return heap_size_; }
 	T& top()
 	{
-		return heap_[0];
+		return heap_[1];
 	}
 	void pop();
 	void push(const T& theElement);
@@ -137,3 +139,33 @@ void MaxHeap<T>::push(const T& theElement)
 	}
 	heap_[current_node] = theElement;
 }
+
+
+
+/*
+	最大左根树模板，提供接口
+*/
+template<class T>
+class MaxHBLT :  public LinkBinaryTree<std::pair<int,T> >,public MaxHBLT<T>
+{
+public:
+	bool empty() const { return tree_size_ == 0; }
+	int size() const { return tree_size_; }
+	T& top()
+	{
+		if (empty())
+			throw "empty";
+		return root_->element_.second;
+	}
+	void pop();
+	void push(const T& theElement);
+	void initialize(T*, int);
+	void meld(MaxHBLT<T>& theHblt)
+	{
+		meld(root_, theHblt.root_);
+		tree_size_ += theHblt.tree_size_;
+		theHblt.root_ = nullptr;
+		theHblt.tree_size_ = 0;
+	}
+};
+
