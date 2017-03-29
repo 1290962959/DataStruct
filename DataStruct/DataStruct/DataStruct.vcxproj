@@ -155,6 +155,7 @@
     <ClInclude Include="digui_jiecheng_extend.h" />
     <ClInclude Include="graph.h" />
     <ClInclude Include="group_sort.h" />
+    <ClInclude Include="guibingsort.h" />
     <ClInclude Include="hanoitower.h" />
     <ClInclude Include="illegalParameterValue.h" />
     <ClInclude Include="insert_sort.h" />
