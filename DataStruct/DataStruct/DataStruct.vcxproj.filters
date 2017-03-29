@@ -87,6 +87,12 @@
     <ClInclude Include="graph.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="searchtree.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dictionary.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

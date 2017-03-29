@@ -151,6 +151,7 @@
     <ClInclude Include="binsort.h" />
     <ClInclude Include="bubble_sort.h" />
     <ClInclude Include="chainlist.h" />
+    <ClInclude Include="dictionary.h" />
     <ClInclude Include="digui_jiecheng_extend.h" />
     <ClInclude Include="graph.h" />
     <ClInclude Include="group_sort.h" />
@@ -164,6 +165,7 @@
     <ClInclude Include="permutations.h" />
     <ClInclude Include="priorityqueue.h" />
     <ClInclude Include="queue.h" />
+    <ClInclude Include="searchtree.h" />
     <ClInclude Include="selection_sort.h" />
     <ClInclude Include="stack.h" />
     <ClInclude Include="stdafx.h" />

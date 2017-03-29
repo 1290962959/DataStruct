@@ -278,14 +278,35 @@ void test_tree()
 //#pragma pack(4)
 
 #include "priorityqueue.h"
-void test_priority()
+void test_maxHeap()
 {
-	MaxHBLT<int> test(10);
-	test.test2();
+	MaxHeap<int> mheap;
+	int a[11] = {0,5,9,1,7,3,6,2,4,15,12 };
+	mheap.initialize(a, 10);
+	for(int i=0;i<10;++i)
+	{
+		cout << mheap.top(); 
+		mheap.pop();			//这里其实就已经是堆排序了
+	}
+	
 }
+
+#include "searchtree.h"
+void test_search_tree()
+{
+	BinarySearchTree<int, string> bst;
+	bst.insert(pair<int, string>(5, "bin"));
+	bst.insert(pair<int,string>(1, "hanbin"));
+	bst.insert(pair<int, string>(2, "han"));
+	bst.erase(1);
+	cout << bst.size() << endl;
+	cout << (*bst.find(2)).second << endl;
+	bst.ascend();
+}
+
+
 int main()
 {//不要随便使用using namespace std , std里的函数很可能与自己定义的名字重复
-	test_priority();
 	//cout << test_static::a_ << endl;
 	//test_permutations();
 	//test_group_sort();
@@ -308,8 +329,11 @@ int main()
 	
 	//test_tree();
 
+	//test_maxHeap();
+	//system("PAUSE");
 
-	system("PAUSE");
+	//test_search_tree();
+
 	return 0;
 }
 

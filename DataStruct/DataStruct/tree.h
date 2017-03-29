@@ -31,10 +31,10 @@ struct BinaryTreeNode
 
 		//构造函数    赋值运算符需要在T类型中重载吗?
 	BinaryTreeNode() { left_child_ = right_child_ = nullptr; }
-	BinaryTreeNode(const T& theElement) { element_ = theElement; left_child_ = right_child_ = nullptr; }
-	BinaryTreeNode(const T& theElement, BinaryTreeNode<T>* theLeftChild, BinaryTreeNode<T>* theRightChild)
-	{
-		element_=theElement;	//在这里直接赋值？ 这里不加;没问题吗？
+	BinaryTreeNode(const T& theElement) :element_(theElement) { left_child_ = right_child_ = nullptr; }
+	BinaryTreeNode(const T& theElement, BinaryTreeNode<T>* theLeftChild, BinaryTreeNode<T>* theRightChild) : element_(theElement)
+	{//!!!!!!!!!!!用赋值号的一个很大的前提是在相应的类型里定义了  重载赋值运算符！！！！！  当然这种办法也需要拷贝构造函数！！！
+			//在这里直接赋值？ 这里不加;没问题吗？
 		left_child_ = theLeftChild;
 		right_child_ = theRightChild;
 	}
@@ -351,7 +351,7 @@ void LinkBinaryTree<E>::level_order(BinaryTreeNode<E>* t)
 template<class E>
 void LinkBinaryTree<E>::output(BinaryTreeNode<E>* t)
 {
-	std::cout << t->element_ << " ";
+	std::cout << t->element_.second << " ";
 }
 
 template<class E>

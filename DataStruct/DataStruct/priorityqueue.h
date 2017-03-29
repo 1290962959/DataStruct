@@ -92,7 +92,7 @@ void MaxHeap<T>::initialize(T* theHeap, int theSize)
 			if (rootElement >= heap_[child])
 				break;
 			heap_[child / 2] = heap_[child];
-			child * = 2;
+			child *= 2;
 		}
 		heap_[child / 2] = rootElement;
 	}
@@ -130,7 +130,7 @@ void MaxHeap<T>::push(const T& theElement)
 		array_length_ *= 2;
 	}
 	int current_node;
-	current_node = heap_size + 1;
+	current_node = heap_size_ + 1;
 	
 	while (current_node != 1 && theElement > heap_[current_node / 2])	//实际上heamp_[0]没有被使用
 	{
