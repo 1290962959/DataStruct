@@ -9,8 +9,8 @@
 #include <new>
 #include <iterator>
 #include <string>
-
-
+#include <time.h>
+#include <Windows.h>  
 using namespace std;
 using std::string;
 long long jiecheng(int n);
@@ -190,6 +190,8 @@ void test_array_stack()
 //链栈的测试程序
 void test_link_stack()
 {
+	
+
 	LinkStack<int> ls;
 	if (ls.empty())
 	{
@@ -198,8 +200,12 @@ void test_link_stack()
 	}
 	cout << ls.size() << endl;
 	ls.pop();
+	
 	cout << ls.size() << endl;
 	cout << ls.top() << endl;
+
+	
+	
 }
 
 #include "hanoitower.h"
@@ -244,9 +250,20 @@ void test_array_queue()
 	cout << aq << endl;
 }
 
+#include "guibingsort.h"
+void test_guibing()
+{
+	int a[10] = { 9,8,7,6,5,4,3,2,1,0 };
+	merge_sort(a, 3, 8);
+	for (int i = 0; i < 10; ++i)
+		cout << a[i]<<" ";
+	cout << endl;
+}
+
 #include "tree.h"
 void test_tree()
 {
+	
 	//LinkBinaryTree<int> tree1;
 	//LinkBinaryTree<int> tree2;
 	//LinkBinaryTree<int> tree3;
@@ -317,8 +334,17 @@ int main()
 	//test_bin_sort();
 	//test_matrix();
 	//test_array_stack();
+
+	//long long start, finish;
+	//long long total;
+	//start = GetTickCount();
+	//for(int i=0;i<30000;++i)
 	//test_link_stack();
 
+	//finish = GetTickCount();
+	//cout << start << endl;
+	//cout << finish << endl;
+	//cout << (double)(finish - start) / 3 << endl;
 	//cout << jiecheng(12) << endl;
 
 	//test_tower();//递归调用超过10次就会出现栈溢出的问题
@@ -333,7 +359,7 @@ int main()
 	//system("PAUSE");
 
 	//test_search_tree();
-
+	test_guibing();
 	return 0;
 }
 
