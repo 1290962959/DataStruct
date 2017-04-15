@@ -320,7 +320,15 @@ void test_search_tree()
 	cout << (*bst.find(2)).second << endl;
 	bst.ascend();
 }
-
+#include "fastsort.h"
+void test_fast_sort()
+{
+	int a[10] = { 9,8,7,6,5,4,3,2,1,0 };
+	fast_sort(a, 0, 9);
+	for (int k = 0; k < 10; ++k)
+		cout << a[k] << " ";
+	cout << endl;
+}
 
 int main()
 {//不要随便使用using namespace std , std里的函数很可能与自己定义的名字重复
@@ -359,7 +367,8 @@ int main()
 	//system("PAUSE");
 
 	//test_search_tree();
-	test_guibing();
+	//test_guibing();
+	test_fast_sort();
 	return 0;
 }
 

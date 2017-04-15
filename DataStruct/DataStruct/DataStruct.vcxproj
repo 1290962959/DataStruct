@@ -102,6 +102,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalOptions>-D_SCL_SECURE_NO_WARNINGS %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -153,6 +154,7 @@
     <ClInclude Include="chainlist.h" />
     <ClInclude Include="dictionary.h" />
     <ClInclude Include="digui_jiecheng_extend.h" />
+    <ClInclude Include="fastsort.h" />
     <ClInclude Include="graph.h" />
     <ClInclude Include="group_sort.h" />
     <ClInclude Include="guibingsort.h" />
